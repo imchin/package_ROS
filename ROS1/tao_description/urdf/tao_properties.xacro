@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org.wiki/xacro">
+ 	
+
+
+	<!-- <xacro:property name= "BASE_LENGTH" value= "0.65"/> 
+ 	<xacro:property name= "BASE_WIDTH" value= "0.55"/> 
+ 	<xacro:property name= "BASE_HEIGHT" value= "0.295"/> 
+	<xacro:property name= "BASE1" value= "base_footprint"/> 
+	<xacro:property name= "LINK11" value= "base_link"/>
+	<xacro:property name= "BASE2" value= "base_footprint2"/> 
+	<xacro:property name= "LINK21" value= "base_link2"/> -->
+
+
+
+	<xacro:property name= "PI" value= "3.1415926535897931"/> 
+ 	<xacro:property name= "C_HASSIS_LENGTH" value= "0.65"/> 
+ 	<xacro:property name= "CHASSIS_WIDTH" value= "0.55"/> 
+ 	<xacro:property name= "CHASSIS_HEIGHT" value= "0.295"/> 
+ 	<xacro:property name= "CHASSIS_ELEVATION" value= "0.065"/> 
+
+ 	<xacro:property name= "WHEEL_RADIUS" value= "0.08"/> 
+ 	<xacro:property name= "WHEEL_THICKNESS" value= "0.04"/> 
+ 	<xacro:property name= "WHEEL_SEPARATION" value= "0.45"/> 
+
+ 	<xacro:property name= "CASTOR_RADIUS" value= "0.035"/> 
+ 	<xacro:property name= "CASTOR_SEPARATION_X" value= "0.56"/> 
+ 	<xacro:property name= "CASTOR_SEPARATION_Y" value= "0.36"/> 
+ 	<xacro:property name= "CASTOR_THICKNESS" value= "0.02"/>
+	<xacro:property name= "CASTOSR_THICKNESS" value= "0.02"/>
+
+
+
+	<xacro:property name= "BASE_HEIGHT" value= "0.295"/>
+	<xacro:property name= "BASE_ELEVATION" value= "0.065"/> 
+	<xacro:property name= "BASE_LENGTH" value= "0.65"/> 
+	<xacro:property name= "BASE_WIDTH" value= "0.55"/> 
+
+	
+	 
+</robot>

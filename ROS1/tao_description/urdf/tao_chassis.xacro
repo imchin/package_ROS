@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<robot name= "tao_chassis" xmlns:xacro="http://www.ros.org.wiki/xacro">
+ 	
+	<!-- <xacro:include filename="$(find tao_description)/urdf/tao_properties.xacro"/>
+ 	<xacro:macro name="chassis" params="">
+ 		
+		<link name= "${parentt}"/> 
+ 		<link name= "${childd}">
+ 			<visual>
+ 				<geometry>
+ 					<box size="${BASE_LENGTH} 
+ 						${BASE_WIDTH} 
+ 						${BASE_HEIGHT}"/>
+ 				</geometry>
+ 				<material name="chassis_color">
+ 					<color rgba= "1 1 1 1"/>
+				</material>
+			</visual>
+		</link>
+		
+		<joint name= "${parentt}_to_${childd}" type="fixed">
+			<parent link= "${parentt}"/>
+			<child link= "${childd}"/>
+ 			<origin xyz ="0 0 ${BASE_ELEVATION+BASE_HEIGHT/2}"/>
+ 		</joint>
+
+ 	</xacro:macro> -->
+
+	<xacro:include filename="$(find tao_description)/urdf/tao_properties.xacro"/>
+
+	<xacro:macro name="chassis" params="r g b a parentt childd">
+		<link name= "${parentt}"/> 
+		<link name= "${childd}">
+			<visual>
+				<geometry>
+					<box size="${BASE_LENGTH} 
+						${BASE_WIDTH} 
+						${BASE_HEIGHT}"/>
+				</geometry>
+				<material name="chassis_color">
+					<color rgba= "${r} ${g} ${b} ${a}"/>
+				</material>
+			</visual>
+		</link>
+		<joint name= "${parentt}_to_${childd}" type="fixed">
+			<parent link= "${parentt}"/>
+			<child link= "${childd}"/>
+			<origin xyz ="0 0 ${BASE_ELEVATION+BASE_HEIGHT/2}"/>
+		</joint>
+	</xacro:macro>
+
+
+
+
+</robot>

@@ -1,0 +1,94 @@
+<launch>
+
+    
+  <node pkg="turtlesim" name="sim" type="turtlesim_node"/> -->
+  <node pkg="rosservice" type="rosservice" name="spawntao2" args="call /spawn 3.54444456 5.54444456 0 turtle2"/> 
+  
+  <node pkg="turtleControl_package" name="target_follower" type="follow_tao1.py"/>
+
+  <!-- <node pkg="turtleControl_package" name="m_arduino" type="m_arduino.py"/>  -->
+
+  
+
+  <!-- <node pkg="rosserial_python" type="serial_node.py" args="/dev/ttyACM0" name="serial_node" respawn="true"/> -->
+
+  <node pkg="tao_description" name="tfBroadcaster" type="turtle_to_TF2.py"/>
+  <node pkg="tao_description" name="tfBroadcaster2" type="turtle2_to_TF2.py"/>
+
+  <node pkg="rviz" type="rviz" name="visualizer" args="-d $(find tao_description)/rviz/config/tao_config.rviz"/>
+  
+  
+  
+   
+  <param name="robot_description" command="$(find xacro)/xacro $(find tao_description)/urdf/tao.xacro"/>
+
+
+  <!-- <include file="$(find gazebo_ros)/launch/empty_world.launch"/> 
+  <node 
+      pkg="gazebo_ros" 
+      type="spawn_model" 
+      name="urdf_spawner"
+      respawn="false"
+      output="screen"
+      args="-urdf -model taoo -param robot_description"/> 
+  <rosparam file="$(find tao_gazebo)/config/controller_config.yaml" command="load"/>
+  <node 
+      pkg="gazebo_ros" 
+      type="spawn_model" 
+      name="urdf_spawnerr"
+      respawn="false"
+      output="screen"
+      args="-urdf -model taoo2 -param robot2_description"/> -->
+
+
+
+
+
+  <!-- <param name="robot_description" command="cat $(find tao_description)/urdf/tao.urdf"/>
+  <param name="robot2_description" command="cat $(find tao_description)/urdf/tao2.urdf"/> -->
+
+
+  <param name="robot2_description" command="$(find xacro)/xacro $(find tao_description)/urdf/tao2.xacro"/> 
+
+  
+
+
+  <!-- <param name="robot_description" command="$(find xacro)/xacro $(find tao_description)/urdf/tao.xacro"/>  -->
+
+  <!-- <node pkg="robot_state_publisher" type="robot_state_publisher" name="urdfToTF2"/> 
+ 	<node pkg="joint_state_publisher" type="joint_state_publisher" name="jointPublish"/> -->
+
+  
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
+    <remap from="robot_description" to="robot2_description" />
+    <remap from="joint_states" to="different_joint_states" />
+    
+  </node>
+  
+
+  
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pubb" >
+    <remap from="robot2_description" to="robot_description" />
+    <remap from="joint_states" to="different_joint_states" />
+  </node>
+    
+
+    
+    
+    
+    
+    
+
+   
+ 
+
+  <node pkg="turtlesim" name="key" type="turtle_teleop_key"/>
+
+
+	
+
+
+
+
+</launch>

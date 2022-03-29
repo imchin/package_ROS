@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<robot name= "tao" xmlns:xacro="http://www.ros.org.wiki/xacro">
+
+ 	<xacro:include filename="$(find tao_description)/urdf/tao_properties.xacro" /> 
+ 	<xacro:include filename="$(find tao_description)/urdf/tao_chassis.xacro" /> 
+ 	<xacro:include filename="$(find tao_description)/urdf/tao_wheel.xacro" /> 
+ 	<xacro:include filename="$(find tao_description)/urdf/tao_castor.xacro" />
+
+ 	<!-- <xacro:Bodyy nameb="${BASE1}"
+		namel="${LINK11}" r="0" g="1" b="1" a="1" ox="0" oy="0" oz="0.215"/> -->
+
+	<xacro:chassis
+		r="0" g="1" b="1" a="1"
+		parentt="base_footprint" childd="base_link"/>
+	
+	<xacro:wheel 
+ 		name="left"
+ 		translation="
+ 			0 
+ 			${WHEEL_SEPARATION/2} 
+ 			${WHEEL_RADIUS-(BASE_HEIGHT/2+BASE_ELEVATION)}"
+ 		rotation="0 0 0"
+ 		parent="base_link"/> 
+
+ 	<xacro:wheel 
+ 		name="right"
+ 		translation="
+ 			0 
+ 			${-WHEEL_SEPARATION/2} 
+ 			${WHEEL_RADIUS-(BASE_HEIGHT/2+BASE_ELEVATION)}"
+ 		rotation="0 0 0"
+ 		parent="base_link"/> 
+
+ 	<xacro:castor 
+ 		name="right_front"
+ 		translation="
+ 			${CASTOR_SEPARATION_X/2} 
+ 			${CASTOR_SEPARATION_Y/2} 
+ 			${CASTOR_RADIUS-(BASE_HEIGHT/2+BASE_ELEVATION)}"
+ 		rotation="0 0 0"
+ 		parent="base_link"/> 
+
+ 	<xacro:castor 
+ 		name="left_front"
+ 		translation="
+ 			${CASTOR_SEPARATION_X/2} 
+ 			${-CASTOR_SEPARATION_Y/2} 
+ 			${CASTOR_RADIUS-(BASE_HEIGHT/2+BASE_ELEVATION)}"
+ 		rotation="0 0 0"
+ 		parent="base_link"/> 
+ 	<xacro:castor 
+ 		name="right_rear"
+ 		translation="
+ 			${-CASTOR_SEPARATION_X/2} 
+ 			${CASTOR_SEPARATION_Y/2} 
+ 			${CASTOR_RADIUS-(BASE_HEIGHT/2+BASE_ELEVATION)}"
+ 		rotation="0 0 0"
+ 		parent="base_link"/> 
+ 	<xacro:castor 
+ 		name="left_rear"
+ 		translation="
+ 			${-CASTOR_SEPARATION_X/2} 
+ 			${-CASTOR_SEPARATION_Y/2} 
+ 			${CASTOR_RADIUS-(BASE_HEIGHT/2+BASE_ELEVATION)}"
+ 		rotation="0 0 0"
+ 		parent="base_link"/>
+
+
+</robot>

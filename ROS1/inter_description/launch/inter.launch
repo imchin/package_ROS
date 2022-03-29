@@ -1,0 +1,45 @@
+<launch>
+
+    
+ 
+
+
+
+  
+
+  <node pkg="rosserial_python" type="serial_node.py" args="/dev/ttyACM0" name="serial_node" respawn="false"/> 
+
+  <node pkg="imu_complementary_filter" type="complementary_filter_node" name="complementary_filter_gain_node" output="screen">
+      
+    <param name="gain_acc" value="0.88"/>
+    <param name="publish_debug_topics" value="true"/>
+   
+  </node> 
+
+  <node pkg="rviz" type="rviz" name="visualizer" args="-d $(find inter_description)/rviz/config/inter_config.rviz"/>
+  
+  <param name="robot_description" command="cat $(find inter_description)/urdf/inter.urdf"/>
+  
+
+  <node pkg="imu_arduino" name="imu_arduino" type="imu_arduino.py"/> 
+
+
+  <node pkg="inter_description" name="tfBroadcaster" type="inter_to_TF2.py"/>
+  
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="urdfToTF2"/> 
+ 	<node pkg="joint_state_publisher" type="joint_state_publisher" name="jointPublish"/>
+  
+    
+    
+
+   
+ 
+
+
+	
+
+
+
+
+</launch>
